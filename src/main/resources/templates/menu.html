@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menú Principal</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f2f5;
+        padding: 20px;
+    }
+    .container {
+        background-color: #ffffff;
+        width: 400px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h1 {
+        font-size: 1.8em;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    h2, h3 {
+        color: #555;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 1em;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    .balance-info span {
+        font-weight: bold;
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    label {
+        font-size: 0.9em;
+        color: #444;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+    .link-list {
+        list-style: none;
+        margin-top: 20px;
+        padding: 0;
+    }
+    .link-list li {
+        margin-bottom: 10px;
+    }
+    .link-list a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .link-list a:hover {
+        text-decoration: underline;
+    }
+    .message {
+        color: #d9534f;
+        font-size: 1em;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bienvenido al Cajero</h1>
+        <h2>Cuenta:</h2>
+        <p class="balance-info">
+            ID Cuenta: <span th:text="${cuenta.idCuenta}"></span><br>
+            Saldo actual: <span th:text="${cuenta.saldo}"></span>
+        </p>
+
+        <h3>Operaciones disponibles:</h3>
+
+        <!-- Formulario para ingresar dinero -->
+        <form th:action="@{/ingresar}" method="post">
+            <label for="cantidad-ingresar">Cantidad a ingresar:</label>
+            <input type="number" name="cantidad" id="cantidad-ingresar" step="0.01" required>
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <!-- Formulario para extraer dinero -->
+        <form th:action="@{/extraer}" method="post">
+            <label for="cantidad-extraer">Cantidad a extraer:</label>
+            <input type="number" name="cantidad" id="cantidad-extraer" step="0.01" required>
+            <button type="submit">Extraer</button>
+        </form>
+
+        <ul class="link-list">
+        <li><a th:href="@{/transferir}">Transferir dinero</a></li>
+            <li><a th:href="@{/movimientos}">Ver movimientos</a></li>
+            <li><a th:href="@{/logout}">Cerrar sesión</a></li>
+        </ul>
+
+        <p class="message" th:text="${mensaje}"></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Inicio de Sesión</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f2f5;
+        margin: 0;
+    }
+    .container {
+        background-color: #ffffff;
+        width: 350px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    h3 {
+        color: #555;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    .message {
+        color: #d9534f; /* Red color for error messages */
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input[type="text"] {
+       width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Aplicación de Cuentas: Inicio de Sesión</h1>
+        <h3>
+            Mensaje:
+            <span class="message" th:text="${mensaje}"></span>
+        </h3>
+        <form th:action="@{/login}" method="post">
+            <input type="text" name="idCuenta" placeholder="Ingrese su ID de cuenta">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+</body>
+</html>

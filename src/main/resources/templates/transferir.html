@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transferir Dinero</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f7fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1em;
+            color: #444;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            color: #d9534f;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transferir Dinero</h1>
+
+        <form th:action="@{/transferir}" method="post">
+            <label for="idCuentaDestino">Cuenta destino:</label>
+            <input type="number" id="idCuentaDestino" name="idCuentaDestino" required>
+
+            <label for="cantidad">Cantidad a transferir:</label>
+            <input type="number" id="cantidad" name="cantidad" step="0.01" required>
+
+            <button type="submit">Transferir</button>
+        </form>
+
+        <p class="message" th:text="${mensaje}"></p>
+        <a th:href="@{/menu}">Volver al menú</a>
+    </div>
+</body>
+</html>
